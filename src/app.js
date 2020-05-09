@@ -1,33 +1,13 @@
 import axios from 'axios';
 
 const state = {
-    todos: [],
-    images: [],
-    BBT: [],
-    GOT: [],
-    testUpload: [],
-    getTestUpload: [],
+    todos: []
 };
 
 const getters = {
     
     allTodos: state => {
         return state.todos;
-    },
-    allImages: state => {
-        return state.images;
-    },
-    allBBT: state => {
-        return state.BBT;
-    },
-    allGOT: state => {
-        return state.GOT;
-    },
-    allTestUpload: state => {
-        return state.testUpload;
-    },
-    getTestUploadData: state => {
-        return state.getTestUpload;
     }
 };
 
@@ -47,21 +27,6 @@ const mutations = {
     },
     removeTodo: (state, id) => {
         state.todos = state.todos.filter(todo => todo.id != id);
-    },
-    setImages: (state, images) => {
-        state.images = images;
-    },
-    setBBT: (state, images) => {
-        state.BBT = images;
-    },
-    setGOT: (state, images) => {
-        state.GOT = images;
-    },
-    setTestUpload: (state, upload) => {
-        state.testUpload = upload;
-    },
-    setTestUploadData: (state, upload) => {
-        state.getTestUpload = upload;
     }
 };
 
@@ -101,70 +66,7 @@ const actions = {
             console.log(res)
             commit('removeTodo', id)
         })
-    },
-    async fetchImages({
-        commit
-    }, id) {
-        await axios.get('https://rickandmortyapi.com/api/character?page=' + id).then(res => {
-            console.log(res)
-            commit('setImages', res.data.results)
-        })
-    },
-    async fetchBBT({
-        commit
-    }, limit) {
-        await axios.get('http://showtimes.everyday.in.th/api/v2/movie?limit=50&offset=' + limit).then(res => {
-            console.log(res)
-            commit('setBBT', res.data)
-        })
-        // commit('setBBT', dd._embedded.episodes)
-    },
-    async fetchTestUpload({
-        commit
-    }) {
-        await axios.get('Image').then(res => {
-            console.log(res)
-            commit('setTestUpload', res.data)
-        })
-    },
-    async getTestUpload({
-        commit
-    }, id) {
-        await axios.get('Image/' + id).then(res => {
-            console.log(res)
-            commit('setTestUploadData', res.data)
-        })
-    },
-    async postTestUpload({
-        commit,
-        dispatch
-    }, data) {
-        await axios.post('Image', data).then(res => {
-            console.log(res)
-            console.log(commit)
-            dispatch('fetchTestUpload')
-        })
-    },
-    async putTestUpload({
-        commit,
-        dispatch
-    }, data) {
-        await axios.put('Image/' + data.id, data).then(res => {
-            console.log(res)
-            console.log(commit)
-            dispatch('fetchTestUpload')
-        })
-    },
-    async deleteTestUpload({
-        commit,
-        dispatch
-    }, id) {
-        await axios.delete('Image/' + id).then(res => {
-            console.log(res)
-            console.log(commit)
-            dispatch('fetchTestUpload')
-        })
-    },
+    }
 };
 
 export default {
