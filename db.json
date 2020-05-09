@@ -2,10 +2,11 @@
   "posts": [
     {
       "id": 1,
-      "title": "Todo1"
+      "title": "Todo1",
+      "completed": false
     }
   ],
   "profile": {
-    "name": "gopala"
+    "name": "Gopala"
   }
 }
