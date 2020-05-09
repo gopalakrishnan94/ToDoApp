@@ -7,11 +7,9 @@ import {
   routes
 } from './router'
 import store from './index';
-import VueYouTubeEmbed from 'vue-youtube-embed'
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
-Vue.use(VueYouTubeEmbed)
 
 const router = new VueRouter({
   routes
